@@ -1,0 +1,266 @@
+.corpo {
+    background-color: #2b2c34;
+    height: 100vb;
+}
+
+div a{
+    color: #2b2c34;
+}
+
+nav {
+    padding: 0.5%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: auto;
+}
+
+.logo {
+    margin-left: 23%;
+}
+
+.user {
+    margin-left: 35%;
+}
+
+main {
+    text-align: center;
+}
+
+main h1 {
+    color: white;
+    margin-top: 5%;
+}
+
+main h3 {
+    color: rgb(255, 199, 114);
+    margin-top: -2%;
+}
+
+main img {
+    /* width: 500px;
+    height: 300px; */
+    width: 35em;
+    height: 20em;
+    border-radius: 10px;
+    margin-left: 1%;
+    -webkit-box-shadow: 0px 0px 24px 18px rgba(255,255,255,0.23); 
+    box-shadow: 0px 0px 24px 18px rgba(255,255,255,0.23);
+}
+
+.html{
+    background-color: #dcece3;
+    width: 100%;
+    height: auto;
+    margin-top: 5%;
+}
+
+.html h1{
+    padding: 5%;
+    margin-left: 30%;
+}
+
+.html h4{
+    margin-top: -7%;
+    margin-bottom: 1%;
+    margin-left: 28%;
+    color: #4a8664;
+}
+
+.html button{
+    margin-left: 35%;
+}
+
+.html p{
+    padding-bottom: 5%;
+    color: #dcece3;
+}
+
+.htmlIMG{
+    width: 20em;
+    height: 25em;
+    margin-left: 60%;
+    margin-top: -22%;
+}
+
+
+.css{
+    background-color: #fcf4a4;
+    width: 100%;
+    height: auto;
+}
+
+.css h1{
+    padding: 5%;
+    margin-left: 31%;
+}
+
+.css h4{
+    margin-top: -7%;
+    margin-bottom: 1%;
+    margin-left: 29%;
+    color: #ddcc15;
+}
+
+.css button{
+    margin-left: 35%;
+}
+
+.css p{
+    padding-bottom: 5%;
+    color:#fcf4a4;
+}
+.cssIMG{
+    width: 20em;
+    height: 20em;
+    margin-left: 60%;
+    margin-top: -25%;
+}
+
+
+footer{
+    width: 100%;
+    background-color: #2b2c34;
+    text-align: center;
+    padding: 3%;
+}
+
+footer a{
+    color: #b9b9b9 ;
+}
+
+footer p{
+    margin-top: 3%;
+    color:  #fcf4a4;
+}
+
+
+.corpoH section{
+    background-color: #dcece3;
+    padding: 3%;
+}
+
+.corpoH h4{
+    color: #4a8664;
+}
+
+
+.corpoC section{
+    background-color: #fcf4a4;
+    padding: 3%;
+}
+
+.corpoC h4{
+    color: #ddcc15;
+}
+
+
+#login{
+    width: 35%;
+    padding: 2%;
+    border-radius: 30px;
+    margin: 12%;
+    margin-left: 35%;
+
+    -webkit-box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    -moz-box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    background-color: rgb(236, 255, 226);
+}
+#login h1{
+    text-align: center; 
+}
+
+
+#cadastro{
+    width: 35%;
+    padding: 2%;
+    border-radius: 30px;
+    margin: 5%;
+    margin-left: 35%;
+
+    -webkit-box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    -moz-box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    background-color: rgb(236, 255, 226);
+}
+#cadastro h1{
+    text-align: center; 
+}
+
+
+#senhaconf{
+    width: 35%;
+    padding: 2%;
+    border-radius: 30px;
+    margin: 12%;
+    margin-left: 35%;
+
+    -webkit-box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    -moz-box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.78);
+    background-color: rgb(236, 255, 226);
+}
+#senhaconf h1{
+    text-align: center; 
+}
+
+
+@media (min-width: 1200px) and (max-width: 1919px){
+    .htmlIMG{
+        margin-bottom: 3%;
+    }
+    .cssIMG{
+        margin-bottom: 3%;
+    }
+}
+@media (max-width: 1200px){
+    .htmlIMG{
+        margin-left: 70%;
+        margin-top: -30%;
+        margin-bottom: 3%;
+    }
+    .html h4{
+        margin-top: -7%;
+        margin-bottom: 3%;
+        margin-left: 25%;
+    }
+    .cssIMG{
+        margin-left: 70%;
+        margin-top: -30%;
+        margin-bottom: 3%;
+    }
+    .css h4{
+        margin-top: -7%;
+        margin-bottom: 3%;
+        margin-left: 25%;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    .htmlIMG{
+        width: 15em;
+        height: 20em;
+    }
+    .cssIMG{
+        width: 15em;
+        height: 15em;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .htmlIMG{
+        width: 15em;
+        height: 20em;
+        margin-left: 50%;
+        margin-top: -15%;
+    }
+    .cssIMG{
+        width: 15em;
+        height: 15em;
+    }
+}
