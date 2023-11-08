@@ -1,22 +1,3 @@
-// Local Storage
-let nameForm = document.getElementById('username').value;
-let usernameForm = document.getElementById('usernameUser').value;
-let emailForm = document.getElementById('email').value;
-let senhaForm = document.getElementById('senha').value;
-let confSenhaForm = document.getElementById('confSenha').value;
-let dataForm = document.getElementById('dtNasc').value;
-let cepForm = document.getElementById('cep').value;
-let ruaForm = document.getElementById('rua').value;
-let numForm = document.getElementById('num').value;
-let bairroForm = document.getElementById('bairro').value;
-let cidadeForm = document.getElementById('cidade').value;
-let ufForm = document.getElementById('uf').value;
-
-let dados = {name: nameForm, username: usernameForm, email: emailForm, senha: senhaForm, data: dataForm, cep: cepForm, rua: ruaForm, num: numForm, bairro: bairroForm, cidade: cidadeForm, uf: ufForm}
-
-let usernameSalvo = JSON.parse(localStorage.getItem(dados)).username;
-let senhaSalvo = JSON.parse(localStorage.getItem(dados)).senha;
-
 const cadastrar = document.getElementById('cadastrar');
 const aprender = document.getElementById('aprender');
 const aprenderCSS = document.getElementById('aprenderCSS');
@@ -28,17 +9,32 @@ const recSenha = document.getElementById('recSenha');
 const tempoAtraso1 = 1500;
 const tempoAtraso2 = 3500;
 
+// import CryptoJS from "crypto-js";
+// const encryptionKey = 'testeee';
+// const mensagem = 'oi tudo bem!'
+// const mensagemCriptografada = CryptoJS.AES.encrypt(mensagem, encryptionKey).toString();
+// alert(mensagemCriptografada);
+
 if (cadastrar || aprender) {
     cadastrar.addEventListener('click', function () {
         window.location.href = 'cadastro.html';
     });
-    
+
     aprender.addEventListener('click', function () {
         const errorMessage = document.getElementById("errorMessageCadastro");
-        if (document.getElementById('usernameUser').value == "" || document.getElementById('password').value == ""){
-            errorMessage.textContent = "Nem todos os campos estão preenchidos!";
-            errorMessage.style.color = "red";
-        } else {
+        const password = document.getElementById('password').value;
+        const username = document.getElementById('usernameUser').value;
+        const users = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        let usuario = users.find(function (user) {
+            return user.usernameForm === username;
+        });
+
+        let senha = users.find(function (passwd) {
+            return passwd.senhaForm === password;
+        });
+
+        if (usuario && senha) {
             errorMessage.textContent = "Login bem-sucedido!";
             errorMessage.style.color = "green";
             setTimeout(function () {
@@ -48,7 +44,29 @@ if (cadastrar || aprender) {
             setTimeout(function () {
                 window.location.href = "index.html";
             }, tempoAtraso2);
+        } else if (usuario && password != senha) {
+            errorMessage.textContent = "Senha incorreta!";
+            errorMessage.style.color = "red";
+        } else if (usernameUser != usuario) {
+            errorMessage.textContent = "Usuário não cadastrado!";
+            errorMessage.style.color = "red";
         }
+
+        // if (!user || user.senha !== password) {
+        //     errorMessage.textContent = "Credenciais inválidas!";
+        //     errorMessage.style.color = "red";
+        // } else {
+        //     errorMessage.textContent = "Login bem-sucedido!";
+        //     errorMessage.style.color = "green";
+        //     setTimeout(function () {
+        //         errorMessage.textContent = "Redirecionando...";
+        //         errorMessage.style.color = "black";
+        //     }, tempoAtraso1);
+        //     setTimeout(function () {
+        //         window.location.href = "index.html";
+        //     }, tempoAtraso2);
+        // }
+
     });
 
 } else if (aprenderCSS || aprenderHTML) {
@@ -63,7 +81,11 @@ if (cadastrar || aprender) {
         window.location.href = 'login.html';
     });
     relCadastro.addEventListener('click', function () {
-        localStorage.setItem(usernameForm, JSON.stringify(dados));
+        const username = document.getElementById('usernameUser').value;
+        const users = JSON.parse(localStorage.getItem('usuarios')) || [];
+        let usuario = users.find(function (user) {
+            return user.usernameForm === username;
+        });
         const errorMessage = document.getElementById("errorMessageCadastro");
         if (document.getElementById('username').value == "" || document.getElementById('usernameUser').value == "" || document.getElementById('email').value == "" || document.getElementById('senha').value == "" || document.getElementById('confSenha').value == "" || document.getElementById('dtNasc').value == "" || document.getElementById('cep').value == "" || document.getElementById('rua').value == "" || document.getElementById('num').value == "" || document.getElementById('bairro').value == "" || document.getElementById('cidade').value == "" || document.getElementById('uf').value == "") {
             errorMessage.textContent = "Nem todos os campos estão preenchidos!";
@@ -72,6 +94,29 @@ if (cadastrar || aprender) {
             errorMessage.textContent = "Senhas não conferem!";
             errorMessage.style.color = "red";
         } else {
+            let usuarios = [];
+            let usuarioAdicionar = {
+                nameForm: document.getElementById('username').value,
+                usernameForm: document.getElementById('usernameUser').value,
+                emailForm: document.getElementById('email').value,
+                senhaForm: document.getElementById('senha').value,
+                confSenhaForm: document.getElementById('confSenha').value,
+                dataForm: document.getElementById('dtNasc').value,
+                cepForm: document.getElementById('cep').value,
+                ruaForm: document.getElementById('rua').value,
+                numForm: document.getElementById('num').value,
+                bairroForm: document.getElementById('bairro').value,
+                cidadeForm: document.getElementById('cidade').value,
+                ufForm: document.getElementById('uf').value
+            };
+            if (localStorage['usuarios']) {
+                usuarios = JSON.parse(localStorage.getItem('usuarios'))
+            }
+            // const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(usuarios), encryptionKey).toString();
+            usuarios.push(usuarioAdicionar);
+            // localStorage.setItem('usuarios', encryptedData);
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
             errorMessage.textContent = "Cadastro bem-sucedido!";
             errorMessage.style.color = "green";
             setTimeout(function () {
@@ -108,3 +153,26 @@ if (cadastrar || aprender) {
         }
     });
 };
+
+// Local Storage
+// let nameForm = document.getElementById('username').value;
+// let usernameForm = document.getElementById('usernameUser').value;
+// let emailForm = document.getElementById('email').value;
+// let senhaForm = document.getElementById('senha').value;
+// let confSenhaForm = document.getElementById('confSenha').value;
+// let dataForm = document.getElementById('dtNasc').value;
+// let cepForm = document.getElementById('cep').value;
+// let ruaForm = document.getElementById('rua').value;
+// let numForm = document.getElementById('num').value;
+// let bairroForm = document.getElementById('bairro').value;
+// let cidadeForm = document.getElementById('cidade').value;
+// let ufForm = document.getElementById('uf').value;
+
+// let dados = {name: nameForm, username: usernameForm, email: emailForm, senha: senhaForm, data: dataForm, cep: cepForm, rua: ruaForm, num: numForm, bairro: bairroForm, cidade: cidadeForm, uf: ufForm}
+
+// let usernameSalvo = JSON.parse(localStorage.getItem(dados)).username;
+// let senhaSalvo = JSON.parse(localStorage.getItem(dados)).senha;
+
+// import CryptoJS from 'crypto-js';
+// const encryptionKey = 'pedroMagalhaes123';
+

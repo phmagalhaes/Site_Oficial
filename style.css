@@ -12,6 +12,7 @@ nav {
     background-color: white;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 nav ul {
@@ -129,6 +130,7 @@ footer{
     background-color: #2b2c34;
     text-align: center;
     padding: 3%;
+    height: 30%;
 }
 
 footer a{
